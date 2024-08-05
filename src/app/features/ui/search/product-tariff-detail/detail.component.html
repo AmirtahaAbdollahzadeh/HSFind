@@ -1,0 +1,61 @@
+<app-header-site></app-header-site>
+<!-- Main Body Starts --> 
+<div class="col-xs-12 pull-left" style="padding:0;">
+
+
+  <div class="col-md-8 col-xs-12 pull-right p-0">
+    <span class="product-title">
+      {{ product?.title }}
+      <br>
+      کشور
+      {{ sourceCountryName }}
+    </span>
+  </div>
+  <div class="col-md-4 col-xs-12 pull-left rtl p-0">
+    <ng-select (change)="getTarrifs()" [(ngModel)]="destinationCoutryCode">
+      <ng-option *ngFor="let cnt of contries" [value]="cnt.code">
+        <span class="fi fi-{{cnt.iso.toLowerCase() }} "></span>
+        {{cnt.officialName}}
+      </ng-option>
+    </ng-select>
+  </div>
+  <style>
+    .ng-select-container {
+  height: 45px !important;
+}
+  </style>
+
+ </div>
+<div class="main-body main" >
+ 
+  <div class="col-xs-12 p-0">
+    <table class="table table=bordered table-hover table-striped">
+      <thead>
+          <tr>
+            <th class="fit">ردیف</th>
+            <th class="fit">کد محصول</th>
+            <th>صادر کننده</th>
+            <th class="fit">سال</th>
+            <th class="fit">ﺗﻌﺮﻓﻪ</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of productList ;index as i; ">
+          <th class="fit">{{ i+1 }}</th>
+          <td class="fit">
+              {{ item.productCode }}
+          </td>
+          <td>
+            <span class="fi fi-{{item.partnerIso2 | lowercase }} "></span>
+            {{ item.partnerName }}
+          </td>
+          <td class="fit">{{ item.year }}</td>
+          <td class="fit">{{ item.minTariff }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+</div>
+<!-- Main Body Ends -->
+<app-footer-site></app-footer-site>

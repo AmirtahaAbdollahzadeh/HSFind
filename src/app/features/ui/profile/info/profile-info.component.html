@@ -1,0 +1,66 @@
+<app-header-site></app-header-site>
+<div class="main-body main row" style="display: block;">
+  
+  <app--profile-sidebar></app--profile-sidebar>
+
+  <div class="col-xs-12 pull-left">
+    <form  [formGroup]="pageForm" class="row">
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>نام</label>
+        <input type="text" formControlName="firstName" class="form-control" placeholder="">
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>نام خانوادگی</label>
+        <input type="text" formControlName="lastName" class="form-control" placeholder="">
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>تلفن همراه</label>
+        <input type="text" formControlName="phoneNumber" class="form-control" placeholder="">
+      </div> 
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>جنسیت</label>
+        <ng-select [(ngModel)]="gender"  [ngModelOptions]="{standalone: true}">
+          <ng-option *ngFor="let cnt of genderList" [value]="cnt.type">
+            {{cnt.name}}
+          </ng-option>
+        </ng-select>
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>تاریخ تولد</label>
+        <ng-persian-datepicker>
+          <input type="text" formControlName="birthDate" class="form-control" placeholder="">
+        </ng-persian-datepicker>
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>ایمیل</label>
+        <input type="text" formControlName="email" class="form-control" placeholder="">
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>کشور</label>
+        <ng-select [(ngModel)]="countryId"  [ngModelOptions]="{standalone: true}">
+          <ng-option *ngFor="let cnt of countries" [value]="cnt.code">
+            <span class="fi fi-{{cnt.iso.toLowerCase() }} "></span>
+            {{cnt.officialName}}
+          </ng-option>
+        </ng-select>
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>شهر</label>
+        <input type="text" formControlName="city" class="form-control" placeholder="">
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>آدرس</label>
+        <input type="text" formControlName="address" class="form-control" placeholder="">
+      </div>
+      <div class="col-xs-12 col-md-4 form-group pull-right">
+        <label>کد پستی</label>
+        <input type="text" formControlName="postalCode" class="form-control" placeholder="">
+      </div>
+      <div class="col-xs-12 form-group pull-right">
+        <label></label>
+        <button (click)="doSave()" class="btn btn-primary">ذخیره</button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer-site></app-footer-site>
